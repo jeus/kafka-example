@@ -30,6 +30,9 @@ public class Producer extends Thread {
         Properties props = new Properties();
         props.put("bootstrap.servers", "172.17.0.11:9092");
         props.put("client.id", "DemoProducer");
+//        props.put("batch.size",150);//this for async by size in buffer
+//        props.put("linger.ms", 9000);//this for async by milisecond messages buffered
+        props.put("acks", "1");
         props.put("key.serializer", "org.apache.kafka.common.serialization.IntegerSerializer");
         props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         producer = new KafkaProducer<>(props);
@@ -43,18 +46,22 @@ public class Producer extends Thread {
             String messageStr = "Message_" + messageNo;
             long startTime = System.currentTimeMillis();
             if (isAsync) { // Send asynchronously
-                producer.send(new ProducerRecord<>(topic, messageNo, messageStr), new DemoCallBack(startTime, messageNo, messageStr));
+                Date newDt = new Date();
+                DemoCallBack back = new DemoCallBack(startTime, messageNo, messageStr);
+                producer.send(new ProducerRecord<>(topic, messageNo, newDt.toString()), back);
+                System.out.println("SEND Async: (" + messageNo + ", " + messageStr + ")");
+                System.out.println("BACK-----"+back.toString());
             } else { // Send synchronously
                 try {
                     Date newDt = new Date();
-                    producer.send(new ProducerRecord<>(topic,messageNo,newDt.toString())).get();
+                    producer.send(new ProducerRecord<>(topic, messageNo, newDt.toString())).get();
                     System.out.println("Sent message: (" + messageNo + ", " + messageStr + ")");
                 } catch (InterruptedException | ExecutionException e) {
                     e.printStackTrace();
                 }
             }
             try {
-                Thread.sleep(500);
+                Thread.sleep(3000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -86,10 +93,11 @@ class DemoCallBack implements Callback {
      * @param exception The exception thrown during processing of this record.
      * Null if no error occurred.
      */
+    @Override
     public void onCompletion(RecordMetadata metadata, Exception exception) {
         long elapsedTime = System.currentTimeMillis() - startTime;
         if (metadata != null) {
-            System.out.println("message(" + key + ", " + message + ") sent to partition(" + metadata.partition()+ "), " + "offset(" + metadata.offset() + ") in " + elapsedTime + " ms");
+            System.out.println("message(" + key + ", " + message + ") sent to partition(" + metadata.partition() + "), " + "offset(" + metadata.offset() + ") in " + elapsedTime + " ms");
         } else {
             exception.printStackTrace();
         }

@@ -15,7 +15,7 @@ public class Starter_Producer {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Producer pr = new Producer("test", Boolean.FALSE);
+        Producer pr = new Producer("test1", true);
         pr.run();
 //        
 //        Consumer consumer = new Consumer("test");

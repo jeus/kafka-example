@@ -18,7 +18,7 @@ public class Starter_Consumer {
 //        Producer pr = new Producer("test", Boolean.FALSE);
 //        pr.run();
         
-        Consumer consumer = new Consumer("test");
+        Consumer consumer = new Consumer("test1");
         consumer.doWork();
     }
     

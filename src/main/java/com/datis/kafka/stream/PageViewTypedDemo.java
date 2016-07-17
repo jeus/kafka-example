@@ -88,11 +88,11 @@ public class PageViewTypedDemo {
 
         final Serializer<PageView> pageViewSerializer = new JsonPOJOSerializer<>();
         serdeProps.put("JsonPOJOClass", PageView.class);
-        pageViewSerializer.configure(serdeProps, false);
+        pageViewSerializer.configure(serdeProps, false);// [T|F] hich farghi nadare :|
 
         final Deserializer<PageView> pageViewDeserializer = new JsonPOJODeserializer<>();
         serdeProps.put("JsonPOJOClass", PageView.class);
-        pageViewDeserializer.configure(serdeProps, false);
+        pageViewDeserializer.configure(serdeProps, true);// [T|F] hich farghi nadare :|
 
         final Serde<PageView> pageViewSerde = Serdes.serdeFrom(pageViewSerializer, pageViewDeserializer);
 

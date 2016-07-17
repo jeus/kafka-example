@@ -52,6 +52,7 @@ public class Consumer extends ShutdownableThread {
         }
     }
 
+    
     @Override
     public String name() {
         return null;

@@ -33,7 +33,7 @@ import org.apache.kafka.streams.kstream.Windowed;
 
 import java.util.Properties;
 
-/**
+/**ok
  * Demonstrates how to perform a join between a KStream and a KTable, i.e. an example of a stateful computation,
  * using general data types (here: JSON; but can also be Avro generic bindings, etc.) for serdes
  * in Kafka Streams.

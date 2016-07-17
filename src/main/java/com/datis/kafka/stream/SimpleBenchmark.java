@@ -5,11 +5,10 @@
  */
 package com.datis.kafka.stream;
 
-/**
+/**ok
  *
  * @author jeus
  */
-
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -72,7 +71,6 @@ public class SimpleBenchmark {
 
         final File rocksdbDir = new File(stateDir, "rocksdb-test");
         rocksdbDir.mkdir();
-
 
         final String kafka = "localhost:9092";
         final String zookeeper = "localhost:2181";
@@ -235,8 +233,9 @@ public class SimpleBenchmark {
         while (true) {
             ConsumerRecords<Long, byte[]> records = consumer.poll(500);
             if (records.isEmpty()) {
-                if (END_KEY.equals(key))
+                if (END_KEY.equals(key)) {
                     break;
+                }
             } else {
                 for (ConsumerRecord<Long, byte[]> record : records) {
                     key = record.key();
@@ -336,7 +335,6 @@ public class SimpleBenchmark {
 
         return new KafkaStreams(builder, props);
     }
-
 
     private KafkaStreams createKafkaStreamsWithStateStore(File stateDir, String kafka, String zookeeper, final CountDownLatch latch) {
         Properties props = new Properties();

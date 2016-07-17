@@ -18,7 +18,7 @@ import org.apache.kafka.streams.StreamsConfig;
 
 import java.util.Properties;
 
-/**
+/**ok
  * Demonstrates, using the high-level KStream DSL, how to read data from a source (input) topic and how to
  * write data to a sink (output) topic.
  *
@@ -50,7 +50,6 @@ public class PipeDemo {
         // usually the stream application would be running forever,
         // in this example we just let it run for some time and stop since the input data is finite.
         Thread.sleep(5000L);
-
         streams.close();
     }
 }

@@ -48,7 +48,7 @@ public class Producer extends Thread {
             if (isAsync) { // Send asynchronously
                 Date newDt = new Date();
                 DemoCallBack back = new DemoCallBack(startTime, messageNo, messageStr);
-                producer.send(new ProducerRecord<>(topic, messageNo, newDt.toString()), back);
+                producer.send(new ProducerRecord(topic, messageNo, newDt.toString()), back);
                 System.out.println("SEND Async: (" + messageNo + ", " + messageStr + ")");
                 System.out.println("BACK-----"+back.toString());
             } else { // Send synchronously

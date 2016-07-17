@@ -38,21 +38,16 @@ public class WordCountDemo {
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
 
         KStreamBuilder builder = new KStreamBuilder();
-
+        
         KStream<String, String> source = builder.stream("streams-file-input");
 
-        KTable<String, Long> counts = source.flatMapValues(new ValueMapper<String, Iterable<String>>() {
-            @Override
-            public Iterable<String> apply(String value) {
-                return Arrays.asList(value.toLowerCase(Locale.getDefault()).split(" "));
-            }
-        }).map(new KeyValueMapper<String, String, KeyValue<String, String>>() {
-            @Override
-            public KeyValue<String, String> apply(String key, String value) {
-                return new KeyValue<>(value, value);
-            }
-        }).countByKey("Counts");
+        
+        //
+      KTable<String, Long> counts = source.flatMapValues((String value) -> Arrays.asList(value.toLowerCase(Locale.getDefault()).split(" ")))
+              .map((String key, String value) -> new KeyValue<>(value, value)).countByKey("Counts");
 
+
+        
         // need to override value serde to Long type
         counts.to(Serdes.String(), Serdes.Long(), "streams-wordcount-output");
 

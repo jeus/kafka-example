@@ -36,9 +36,9 @@ public class BenchMarkProducer extends Thread {
         Properties props = new Properties();
         props.put("bootstrap.servers", "172.17.0.13:9092");
         props.put("client.id", "OrderingTest");
-//        props.put("batch.size",150);//this for async by size in buffer
-//        props.put("linger.ms", 9000);//this for async by milisecond messages buffered
-        props.put("acks", "0");
+//      props.put("batch.size",1000);//this for async by size in buffer
+//      props.put("linger.ms", 9000);//this for async by milisecond messages buffered
+        props.put("acks", "1");
         props.put("key.serializer", "org.apache.kafka.common.serialization.IntegerSerializer");
         props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         producer = new KafkaProducer<>(props);

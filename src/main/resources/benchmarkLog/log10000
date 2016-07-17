@@ -1,0 +1,169 @@
+props.put("batch.size",500);//this for async by size in buffer
+//props.put("linger.ms", 9000);//this for async by milisecond messages buffered
+props.put("acks", "1");
+ASync PARTITION 0:---->0
+ASync PARTITION 1:---->0
+ASync PARTITION 2:---->0
+ASync PARTITION 3:---->0
+*************************************************
+ASync PARTITION 0:---->0
+ASync PARTITION 1:---->0
+ASync PARTITION 2:---->0
+ASync PARTITION 3:---->0
+1.065
+-------------------------------------------------
+-------------------------------------------------
+-------------------------------------------------
+ASync Callback PARTITION 0:---->0
+ASync Callback PARTITION 1:---->0
+ASync Callback PARTITION 2:---->0
+ASync Callback PARTITION 3:---->0
+*************************************************
+ASync Callback PARTITION 0:---->887
+ASync Callback PARTITION 1:---->883
+ASync Callback PARTITION 2:---->882
+ASync Callback PARTITION 3:---->896
+0.875
+-------------------------------------------------
+-------------------------------------------------
+-------------------------------------------------
+Sync PARTITION 0:---->2477
+Sync PARTITION 1:---->2539
+Sync PARTITION 2:---->2528
+Sync PARTITION 3:---->2456
+*************************************************
+Sync PARTITION 0:---->1590
+Sync PARTITION 1:---->1656
+Sync PARTITION 2:---->1646
+Sync PARTITION 3:---->1560
+5.0
+-------------------------------------------------
+-------------------------------------------------
+-------------------------------------------------
+Sync CallBack PARTITION 0:---->2477
+Sync CallBack PARTITION 1:---->2539
+Sync CallBack PARTITION 2:---->2528
+Sync CallBack PARTITION 3:---->2456
+*************************************************
+Sync CallBack PARTITION 0:---->2477
+Sync CallBack PARTITION 1:---->2539
+Sync CallBack PARTITION 2:---->2528
+Sync CallBack PARTITION 3:---->2456
+5.096
+****************************************************************************************************************
+****************************************************************************************************************
+****************************************************************************************************************
+****************************************************************************************************************
+****************************************************************************************************************
+****************************************************************************************************************
+props.put("batch.size",1000);//this for async by size in buffer
+//props.put("linger.ms", 9000);//this for async by milisecond messages buffered
+props.put("acks", "1");
+Sync PARTITION 0:---->0
+ASync PARTITION 1:---->0
+ASync PARTITION 2:---->0
+ASync PARTITION 3:---->0
+*************************************************
+ASync PARTITION 0:---->0
+ASync PARTITION 1:---->0
+ASync PARTITION 2:---->0
+ASync PARTITION 3:---->0
+1.027
+-------------------------------------------------
+-------------------------------------------------
+-------------------------------------------------
+ASync Callback PARTITION 0:---->0
+ASync Callback PARTITION 1:---->0
+ASync Callback PARTITION 2:---->0
+ASync Callback PARTITION 3:---->0
+*************************************************
+ASync Callback PARTITION 0:---->2197
+ASync Callback PARTITION 1:---->2175
+ASync Callback PARTITION 2:---->2171
+ASync Callback PARTITION 3:---->2190
+1.095
+-------------------------------------------------
+-------------------------------------------------
+-------------------------------------------------
+Sync PARTITION 0:---->2477
+Sync PARTITION 1:---->2539
+Sync PARTITION 2:---->2528
+Sync PARTITION 3:---->2456
+*************************************************
+Sync PARTITION 0:---->280
+Sync PARTITION 1:---->364
+Sync PARTITION 2:---->357
+Sync PARTITION 3:---->266
+5.427
+-------------------------------------------------
+-------------------------------------------------
+-------------------------------------------------
+Sync CallBack PARTITION 0:---->2477
+Sync CallBack PARTITION 1:---->2539
+Sync CallBack PARTITION 2:---->2528
+Sync CallBack PARTITION 3:---->2456
+*************************************************
+Sync CallBack PARTITION 0:---->2477
+Sync CallBack PARTITION 1:---->2539
+Sync CallBack PARTITION 2:---->2528
+Sync CallBack PARTITION 3:---->2456
+5.275
+****************************************************************************************************************
+****************************************************************************************************************
+****************************************************************************************************************
+****************************************************************************************************************
+****************************************************************************************************************
+****************************************************************************************************************
+//        props.put("batch.size",1000);//this for async by size in buffer
+//        props.put("linger.ms", 9000);//this for async by milisecond messages buffered
+props.put("acks", "0");
+ASync PARTITION 0:---->0
+ASync PARTITION 1:---->0
+ASync PARTITION 2:---->0
+ASync PARTITION 3:---->0
+*************************************************
+ASync PARTITION 0:---->0
+ASync PARTITION 1:---->0
+ASync PARTITION 2:---->0
+ASync PARTITION 3:---->0
+1.256
+-------------------------------------------------
+-------------------------------------------------
+-------------------------------------------------
+ASync Callback PARTITION 0:---->0
+ASync Callback PARTITION 1:---->0
+ASync Callback PARTITION 2:---->0
+ASync Callback PARTITION 3:---->0
+*************************************************
+ASync Callback PARTITION 0:---->2244
+ASync Callback PARTITION 1:---->2284
+ASync Callback PARTITION 2:---->2290
+ASync Callback PARTITION 3:---->2186
+1.024
+-------------------------------------------------
+-------------------------------------------------
+-------------------------------------------------
+Sync PARTITION 0:---->2477
+Sync PARTITION 1:---->2539
+Sync PARTITION 2:---->2528
+Sync PARTITION 3:---->2456
+*************************************************
+Sync PARTITION 0:---->233
+Sync PARTITION 1:---->255
+Sync PARTITION 2:---->238
+Sync PARTITION 3:---->270
+3.889
+-------------------------------------------------
+-------------------------------------------------
+-------------------------------------------------
+Sync CallBack PARTITION 0:---->2477
+Sync CallBack PARTITION 1:---->2539
+Sync CallBack PARTITION 2:---->2528
+Sync CallBack PARTITION 3:---->2456
+*************************************************
+Sync CallBack PARTITION 0:---->2477
+Sync CallBack PARTITION 1:---->2539
+Sync CallBack PARTITION 2:---->2528
+Sync CallBack PARTITION 3:---->2456
+3.492
+

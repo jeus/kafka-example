@@ -18,12 +18,12 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 import java.util.Collections;
 import java.util.Properties;
 
-public class Consumer extends ShutdownableThread {
+public class ConsumerOffsetTest extends ShutdownableThread {
 
     private final KafkaConsumer<Integer, String> consumer;
     private final String topic;
 
-    public Consumer(String topic) {
+    public ConsumerOffsetTest(String topic) {
         super("KafkaConsumerExample", false);
         Properties props = new Properties();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "172.17.0.13:9092");//172.17.0.8:2181,172.17.0.9:2181,172.17.0.10:2181");

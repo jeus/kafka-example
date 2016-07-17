@@ -62,4 +62,10 @@ public class ConsumerOffsetTest extends ShutdownableThread {
     public boolean isInterruptible() {
         return false;
     }
+    
+    
+    public static void main(String[] args) {
+        ConsumerOffsetTest consumer = new ConsumerOffsetTest("test1");
+        consumer.doWork();
+    }
 }

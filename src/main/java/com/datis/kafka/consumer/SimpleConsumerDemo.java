@@ -51,19 +51,23 @@ public class SimpleConsumerDemo {
     public static void main(String[] args) throws Exception {
 //        generateData();
 
-        SimpleConsumer simpleConsumer = new SimpleConsumer(KafkaProperties.KAFKA_SERVER_URL,KafkaProperties.KAFKA_SERVER_PORT,
-                KafkaProperties.CONNECTION_TIMEOUT,KafkaProperties.KAFKA_PRODUCER_BUFFER_SIZE,KafkaProperties.CLIENT_ID);
+        SimpleConsumer simpleConsumer = new SimpleConsumer(
+                KafkaProperties.KAFKA_SERVER_URL,
+                KafkaProperties.KAFKA_SERVER_PORT,
+                KafkaProperties.CONNECTION_TIMEOUT,
+                KafkaProperties.KAFKA_PRODUCER_BUFFER_SIZE,
+                KafkaProperties.CLIENT_ID);
 
         System.out.println("Testing single fetch");
-        FetchRequest req = new FetchRequestBuilder().clientId(KafkaProperties.CLIENT_ID).addFetch(KafkaProperties.TOPIC2, 0,100L, 1000000).build();
+        FetchRequest req = new FetchRequestBuilder().clientId(KafkaProperties.CLIENT_ID).addFetch(KafkaProperties.TOPIC1, 0, 100L, 1000000).build();
         FetchResponse fetchResponse = simpleConsumer.fetch(req);
-        printMessages(fetchResponse.messageSet(KafkaProperties.TOPIC2, 0));
+        printMessages(fetchResponse.messageSet(KafkaProperties.TOPIC1, 0));
 
         System.out.println("Testing single multi-fetch");
         Map<String, List<Integer>> topicMap = new HashMap<>();
-        topicMap.put(KafkaProperties.TOPIC2, Collections.singletonList(0));
-        topicMap.put(KafkaProperties.TOPIC3, Collections.singletonList(0));
-        req = new FetchRequestBuilder().clientId(KafkaProperties.CLIENT_ID).addFetch(KafkaProperties.TOPIC2, 0, 0L, 100).addFetch(KafkaProperties.TOPIC3, 0, 0L, 100).build();
+        topicMap.put(KafkaProperties.TOPIC1, Collections.singletonList(0));
+//        topicMap.put(KafkaProperties.TOPIC3, Collections.singletonList(0));
+        req = new FetchRequestBuilder().clientId(KafkaProperties.CLIENT_ID).addFetch(KafkaProperties.TOPIC1, 0, 0L, 100).addFetch(KafkaProperties.TOPIC3, 0, 0L, 100).build();
         fetchResponse = simpleConsumer.fetch(req);
         int fetchReq = 0;
         for (Map.Entry<String, List<Integer>> entry : topicMap.entrySet()) {

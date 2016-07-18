@@ -11,6 +11,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -54,12 +55,18 @@ public class Consumer1 extends Thread {
 //            consumer.seekToBeginning(Collections.singleton(tp0));
 //            consumer.seek(tp0,100);
         consumer.poll(100);
-//        consumer.seekToBeginning(Collections.singleton(tp.get(0)));
-////        consumer.seekToBeginning(Collections.singleton(tp.get(1)));
-//        consumer.seek(tp.get(1), 40);
-//        consumer.seekToBeginning(Collections.singleton(tp.get(2)));
-//        consumer.seekToBeginning(Collections.singleton(tp.get(3)));
-        System.out.println("SEEK To Begin");
+         Set<TopicPartition> setTopic = consumer.assignment();
+        System.out.println("SIIIIIZE"+setTopic.size());
+         for (TopicPartition topicPartition : setTopic) {
+             System.out.println("topic and partition"+topicPartition.toString());
+        }
+//         return;
+        consumer.seekToBeginning(Collections.singleton(tp.get(0)));
+//        consumer.seekToBeginning(Collections.singleton(tp.get(1)));
+        consumer.seek(tp.get(1), 3001);
+        consumer.seekToBeginning(Collections.singleton(tp.get(2)));
+        consumer.seekToBeginning(Collections.singleton(tp.get(3)));
+//        System.out.println("SEEK To Begin");
 //        for (int i = 0; i < 2; i++) {
 
         ConsumerRecords<Integer, String> records = consumer.poll(1000);
@@ -122,8 +129,8 @@ public class Consumer1 extends Thread {
 //        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "172.17.0.11:2181");//172.17.0.8:2181,172.17.0.9:2181,172.17.0.10:2181");
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "172.17.0.13:9092");//172.17.0.8:2181,172.17.0.9:2181,172.17.0.10:2181");
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "TestMikonam1");
-        props.put(ConsumerConfig.MAX_PARTITION_FETCH_BYTES_CONFIG, (400) + "");//change this for increase and decrease packet fethe by consumer every message is 100Byte
-//        props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, "200");
+//      props.put(ConsumerConfig.MAX_PARTITION_FETCH_BYTES_CONFIG, (400) + "");//change this for increase and decrease packet fethe by consumer every message is 100Byte
+        props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, "200");
         props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "false");
         props.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, "1000");
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_DOC, "lates");
